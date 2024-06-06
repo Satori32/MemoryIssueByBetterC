@@ -89,6 +89,14 @@ T* Index(Vector<T>* In,size_t N) {
 	if (In->Use <= N) return NULL;
 	return In->M[N];
 }
+template<class T>
+bool Free(Vector<T>* In) {
+	if (MemoryDeAlloc(&In->M) == false) { return false; }
+	In->Use = 0;
+
+	return true;
+
+}
 
 int main() {
 	Memory<int> M = MemoryAlloc<int>(16);
